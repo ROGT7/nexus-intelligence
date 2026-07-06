@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Nexus Intelligence</title>
+    <description>Independent research collective — Analyzing complex socio-economic systems</description>
+    <link>https://nexus-intelligence.github.io</link>
+    <language>en</language>
+    <item>
+      <title>Enquete: Bitcoin et les signaux que personne ne regarde</title>
+      <description>Macro-Financial Trends — Tracking capital flows</description>
+      <pubDate>2026-07-06T00:00:00Z</pubDate>
+      <category>Macro-Financial</category>
+    </item>
+    <item>
+      <title>Alerte: Concentration du capital technologique</title>
+      <description>Corporate Governance — Systemic risk assessment</description>
+      <pubDate>2026-07-04T00:00:00Z</pubDate>
+      <category>Corporate Governance</category>
+    </item>
+    <item>
+      <title>Decryptage: Geopolitique du petrole</title>
+      <description>Systemic Resilience — Infrastructure volatility analysis</description>
+      <pubDate>2026-07-02T00:00:00Z</pubDate>
+      <category>Systemic Resilience</category>
+    </item>
+  </channel>
+</rss>
