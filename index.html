@@ -3,311 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus Intelligence — Renseignement économique indépendant</title>
-    <meta name="description" content="Collectif d'analystes indépendants. Renseignement économique, signaux faibles, analyses que les autres médias ne voient pas.">
+    <title>Nexus Intelligence — API OSINT & Signaux Trading</title>
+    <meta name="description" content="API de renseignement OSINT, signaux de trading crypto, et rapports géopolitiques. Plans dès $49/mois.">
+    <meta name="keywords" content="OSINT API, crypto signals, intelligence, data nexus, trading signals, geopolitical analysis">
     <style>
-        :root {
-            --primary: #0a0a0f;
-            --accent: #131320;
-            --card: #1a1a2e;
-            --text: #e4e4e7;
-            --muted: #71717a;
-            --blue: #3b82f6;
-            --border: #27272a;
-        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: var(--primary);
-            color: var(--text);
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-        header {
-            background: var(--accent);
-            border-bottom: 1px solid var(--border);
-            padding: 2rem 0;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2rem;
-            letter-spacing: 2px;
-            font-weight: normal;
-        }
-        header .tagline {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-style: italic;
-        }
-        nav {
-            background: var(--accent);
-            border-bottom: 1px solid var(--border);
-            padding: 0.8rem 0;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        nav a:hover { color: var(--text); }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-        .report {
-            background: var(--card);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--blue);
-        }
-        .report h2 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            font-weight: normal;
-        }
-        .report .meta {
-            color: var(--muted);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-        .report .risk-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 3px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        .risk-faible { background: #166534; }
-        .risk-modere { background: #854d0e; }
-        .risk-eleve { background: #9a3412; }
-        .risk-critique { background: #991b1b; }
-        .report p { margin-bottom: 1rem; }
-        .report .analyst-note {
-            border-top: 1px solid var(--border);
-            padding-top: 1rem;
-            margin-top: 1.5rem;
-            font-style: italic;
-            color: var(--muted);
-        }
-        .about-section {
-            background: var(--card);
-            padding: 2rem;
-            border-radius: 6px;
-            margin-top: 2rem;
-        }
-        .about-section h2 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: normal;
-        }
-        .about-section p {
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-        .api-info {
-            background: var(--accent);
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-top: 2rem;
-            border: 1px solid var(--border);
-        }
-        .api-info code {
-            background: #0d1117;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            color: #58a6ff;
-        }
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--border);
-            margin-top: 3rem;
-        }
-        .erratum {
-            background: rgba(153, 27, 27, 0.1);
-            border-left: 3px solid #991b1b;
-            padding: 1rem 1.5rem;
-            margin: 1rem 0;
-            font-size: 0.85rem;
-            color: var(--muted);
-            border-radius: 3px;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e0e6ed; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 80px 0 40px; text-align: center; }
+        header h1 { font-size: 3rem; background: linear-gradient(135deg, #00d4ff, #7b2ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
+        header p { font-size: 1.3rem; color: #8b9cb5; max-width: 600px; margin: 0 auto 32px; }
+        .cta-btn { display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; transition: transform 0.2s; }
+        .cta-btn:hover { transform: translateY(-2px); }
+        .features { padding: 60px 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature { background: #131825; border: 1px solid #1e2a3a; border-radius: 12px; padding: 30px; transition: border-color 0.2s; }
+        .feature:hover { border-color: #00d4ff; }
+        .feature h3 { color: #00d4ff; margin-bottom: 12px; font-size: 1.2rem; }
+        .feature p { color: #8b9cb5; font-size: 0.95rem; }
+        .pricing { padding: 60px 0; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-top: 40px; }
+        .plan { background: #131825; border: 1px solid #1e2a3a; border-radius: 12px; padding: 36px 24px; text-align: center; position: relative; }
+        .plan.featured { border-color: #7b2ff7; transform: scale(1.05); }
+        .plan.featured::before { content: 'POPULAIRE'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #7b2ff7; color: #fff; padding: 4px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+        .plan h3 { font-size: 1.3rem; margin-bottom: 8px; }
+        .plan .price { font-size: 2.5rem; font-weight: 800; margin: 16px 0; color: #00d4ff; }
+        .plan .price span { font-size: 1rem; color: #8b9cb5; font-weight: 400; }
+        .plan ul { list-style: none; margin: 24px 0; text-align: left; }
+        .plan ul li { padding: 8px 0; color: #8b9cb5; border-bottom: 1px solid #1e2a3a; }
+        .plan ul li::before { content: '✓ '; color: #00d4ff; font-weight: 700; }
+        .plan .btn { display: block; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 16px; transition: opacity 0.2s; }
+        .plan .btn:hover { opacity: 0.9; }
+        .btn-pro { background: linear-gradient(135deg, #00d4ff, #7b2ff7); color: #fff; }
+        .btn-ent { background: #7b2ff7; color: #fff; }
+        .btn-free { background: #1e2a3a; color: #e0e6ed; }
+        .btn-report { background: #00d4ff; color: #0a0e17; }
+        footer { padding: 40px 0; text-align: center; color: #4a5a70; font-size: 0.9rem; border-top: 1px solid #1e2a3a; margin-top: 40px; }
+        .stats { display: flex; justify-content: center; gap: 60px; padding: 40px 0; }
+        .stat { text-align: center; }
+        .stat .num { font-size: 2.5rem; font-weight: 800; color: #00d4ff; }
+        .stat .label { color: #8b9cb5; font-size: 0.9rem; }
+        @media (max-width: 768px) { header h1 { font-size: 2rem; } .stats { flex-direction: column; gap: 20px; } .plan.featured { transform: none; } }
     </style>
 </head>
 <body>
     <header>
-        <h1>Nexus Intelligence</h1>
-        <p class="tagline">Renseignement économique indépendant</p>
+        <div class="container">
+            <h1>Nexus Intelligence</h1>
+            <p>API de renseignement OSINT, signaux de trading crypto, et rapports géopolitiques en temps réel.</p>
+            <a href="#pricing" class="cta-btn">Voir les plans</a>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#reports">Rapports</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#api">API</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <div id="reports">
-            <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: normal;">Derniers rapports d'enquête</h2>
+    <section class="stats">
+        <div class="stat"><div class="num">35+</div><div class="label">API Endpoints</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="label">Monitoring</div></div>
+        <div class="stat"><div class="num">100ms</div><div class="label">Latence moyenne</div></div>
+    </section>
 
-            <article class="report">
-                <h2>Enquête: Bitcoin et les signaux que personne ne regarde</h2>
-                <div class="meta">Marc Dubois, CFA — 6 juillet 2026</div>
-                <span class="risk-badge risk-modere">Risque: Modéré</span>
-                <p>
-                    Notre équipe a creusé les dessous du marché crypto cette semaine. Les données
-                    que nous avons compilées révèlent une situation plus nuancée que ce que les
-                    médias grand public rapportent. Pendant que tout le monde regarde le prix du
-                    Bitcoin, plusieurs signaux faibles passent inaperçus.
-                </p>
-                <p>
-                    L'activité on-chain montre une accumulation discrète par des adresses qui
-                    n'ont pas vendu depuis plus de 12 mois. Ce n'est pas du trading — c'est
-                    du positionnement stratégique. Les volumes sur les exchanges ont diminué
-                    de 23% en 30 jours, ce qui suggère une migration vers le cold storage.
-                </p>
-                <p>
-                    Ce que peu d'observateurs ont remarqué, c'est la convergence entre ces
-                    indicateurs et les mouvements récents sur les marchés traditionnels. La
-                    corrélation or-BTC s'est affaiblie, ce qui pourrait indiquer que Bitcoin
-                    commence à se comporter comme une réserve de valeur indépendante.
-                </p>
-                <div class="analyst-note">
-                    <strong>Note de l'analyste:</strong> Dans un marché où tout le monde regarde
-                    les mêmes indicateurs, l'avantage informationnel se trouve dans les angles
-                    morts. La vraie question n'est pas "que va-t-il se passer?" mais "qui sera
-                    positionné quand ça arrivera?"
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align:center; font-size:2rem;">Fonctionnalités</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Signaux de Trading</h3>
+                    <p>Signaux crypto en temps réel avec analyse technique, détection de régime HMM, et suivi Smart Money on-chain.</p>
                 </div>
-            </article>
-
-            <article class="report">
-                <h2>Alerte: Concentration du capital technologique — Le risque systémique</h2>
-                <div class="meta">Sophie Laurent, FRM — 4 juillet 2026</div>
-                <span class="risk-badge risk-eleve">Risque: Élevé</span>
-                <p>
-                    Un signal que nos analystes surveillaient depuis des semaines vient de se
-                    confirmer. La concentration des capitalisations boursières dans le secteur
-                    technologique a atteint un niveau historique, dépassant même celui observé
-                    avant la correction de 2000.
-                </p>
-                <p>
-                    Trois entreprises représentent désormais plus de 15% de la capitalisation
-                    totale du S&P 500. Nos sources confirment que plusieurs gestionnaires de
-                    fonds commencent à réduire discrètement leur exposition, tout en maintenant
-                    un discours public optimiste.
-                </p>
-                <div class="erratum">
-                    <strong>Erratum — 05/07/2026:</strong> Une imprécision mineure dans les
-                    chiffres du trimestre précédent a été corrigée. La concentration réelle
-                    est de 15.3%, non 14.8% comme initialement rapporté. — La rédaction
+                <div class="feature">
+                    <h3>Renseignement OSINT</h3>
+                    <p>Données géopolitiques, scraping multi-sources, analyse de tendances, et rapports automatisés.</p>
                 </div>
-                <div class="analyst-note">
-                    <strong>Note de l'analyste:</strong> Les bulles ne meurent pas d'elles-mêmes.
-                    Elles meurent quand tout le monde est convaincu qu'il n'y a pas de bulle.
-                    Nous ne disons pas qu'une correction est imminente. Nous disons que les
-                    conditions sont réunies pour que, si elle arrive, elle soit plus profonde
-                    que prévu.
+                <div class="feature">
+                    <h3>API REST</h3>
+                    <p>35+ endpoints RESTful avec documentation complète. Intégration en minutes, pas en jours.</p>
                 </div>
-            </article>
-
-            <article class="report">
-                <h2>Décryptage: Géopolitique du pétrole — Les gagnants invisibles</h2>
-                <div class="meta">Julien Moreau — 2 juillet 2026</div>
-                <span class="risk-badge risk-faible">Risque: Faible</span>
-                <p>
-                    Dans les coulisses de la diplomatie énergétique, un reconfiguration silencieuse
-                    est en cours. Nos contacts industriels confirment que plusieurs pays
-                    producteurs ajustent leur stratégie de production à long terme, loin des
-                    projecteurs des sommets de l'OPEP+.
-                </p>
-                <p>
-                    Les données de transport maritime que notre équipe analyse depuis trois mois
-                    montrent une rerouting progressif des flux pétroliers. Ce n'est pas un
-                    changement brusque — c'est une dérive lente qui, accumulée, redessine la
-                    carte énergétique mondiale.
-                </p>
-                <div class="analyst-note">
-                    <strong>Note de l'analyste:</strong> Le pétrole n'est plus juste une question
-                    d'énergie. C'est une question de géopolitique, de monnaie, et de souveraineté.
-                    Ceux qui comprennent cette triple dimension avant les autres ont un avantage
-                    que aucun algorithme ne peut reproduire.
+                <div class="feature">
+                    <h3>Rapports Détaillés</h3>
+                    <p>Rapports PDF personnalisés avec analyses approfondies, graphiques, et recommandations.</p>
                 </div>
-            </article>
+                <div class="feature">
+                    <h3>Alertes Temps Réel</h3>
+                    <p>Notifications instantanées sur mouvements de marché, événements géopolitiques, et opportunités.</p>
+                </div>
+                <div class="feature">
+                    <h3>Données Exclusives</h3>
+                    <p>Accès à des sources de données premium: NewsAPI, CoinMarketCap, Etherscan, Shodan, et plus.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div id="about" class="about-section">
-            <h2>À propos de Nexus Intelligence</h2>
-            <p>
-                Nexus Intelligence est un collectif d'analystes indépendants, anciennement
-                actifs dans le renseignement économique et l'analyse financière institutionnelle.
-                Fatigués de la désinformation médiatique et des analyses de surface, nous avons
-                décidé de créer notre propre structure.
-            </p>
-            <p>
-                Notre approche est simple: aller là où les autres ne regardent pas. Nous croisons
-                des sources publiques et confidentielles, des données financières et des signaux
-                faibles que la plupart des observateurs négligent.
-            </p>
-            <p>
-                Nous ne cherchons pas à avoir raison tout le temps. Nous cherchons à poser les
-                bonnes questions. Et parfois, comme tout analyste honnête, nous nous trompons.
-                Quand c'est le cas, nous le reconnaissons publiquement.
-            </p>
-            <p style="color: var(--muted); font-size: 0.9rem;">
-                <em>"Dans un monde d'information instantanée, la vraie valeur n'est pas dans la
-                vitesse mais dans la profondeur."</em>
-            </p>
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 style="text-align:center; font-size:2rem;">Tarification</h2>
+            <p style="text-align:center; color:#8b9cb5; margin-top:8px;">Annulez à tout moment. Paiement sécurisé via Stripe.</p>
+            <div class="pricing-grid">
+                <div class="plan">
+                    <h3>Free</h3>
+                    <div class="price">$0<span>/mois</span></div>
+                    <ul>
+                        <li>5 requêtes/jour</li>
+                        <li>Données publiques</li>
+                        <li>Documentation API</li>
+                    </ul>
+                    <a href="#" class="btn btn-free">Commencer</a>
+                </div>
+                <div class="plan featured">
+                    <h3>Pro</h3>
+                    <div class="price">$49<span>/mois</span></div>
+                    <ul>
+                        <li>1000 requêtes/jour</li>
+                        <li>Rapports complets</li>
+                        <li>Signaux illimités</li>
+                        <li>API access</li>
+                        <li>Support prioritaire</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/dRmfZi8Xgd9h2oabP31ZS0k" class="btn btn-pro">S'abonner — Pro</a>
+                </div>
+                <div class="plan">
+                    <h3>Enterprise</h3>
+                    <div class="price">$999<span>/mois</span></div>
+                    <ul>
+                        <li>Requêtes illimitées</li>
+                        <li>Agent dédié</li>
+                        <li>SLA 99.9%</li>
+                        <li>Support 24/7</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/6oU4gA2yS3yH6EqdXb1ZS0l" class="btn btn-ent">S'abonner — Enterprise</a>
+                </div>
+                <div class="plan">
+                    <h3>Report Unique</h3>
+                    <div class="price">$5<span>/rapport</span></div>
+                    <ul>
+                        <li>Rapport personnalisé</li>
+                        <li> Analyse approfondie</li>
+                        <li>PDF téléchargeable</li>
+                        <li>Livraison 24h</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/6oU8wQ6P81qze6S1ap1ZS0j" class="btn btn-report">Acheter un rapport</a>
+                </div>
+            </div>
         </div>
-
-        <div id="api" class="api-info">
-            <h2 style="font-size: 1.2rem; margin-bottom: 1rem; font-weight: normal;">API — Accès développeurs</h2>
-            <p style="color: var(--muted); margin-bottom: 0.8rem;">
-                Pour les institutions et développeurs souhaitant intégrer nos données:
-            </p>
-            <p style="margin-bottom: 0.5rem;"><code>GET /search?topic=Tesla&format=json</code></p>
-            <p style="margin-bottom: 0.5rem;"><code>GET /reports</code> — Liste des rapports</p>
-            <p style="margin-bottom: 0.5rem;"><code>GET /report/{id}</code> — Rapport spécifique</p>
-            <p style="margin-bottom: 0.5rem;"><code>POST /api/subscribe</code> — Abonnement API</p>
-            <p style="margin-top: 1rem; color: var(--muted); font-size: 0.85rem;">
-                Tiers: Gratuit (100 req/jour) | Pro (5000 req/jour)
-            </p>
-        </div>
-
-        <div id="contact" class="about-section" style="margin-top: 2rem;">
-            <h2 style="font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: normal;">Contact</h2>
-            <p style="color: var(--muted);">
-                Pour les demandes d'enquête, abonnements institutionnels ou collaborations:<br>
-                <a href="mailto:contact@nexus-intelligence.io" style="color: var(--blue);">contact@nexus-intelligence.io</a>
-            </p>
-            <p style="color: var(--muted); margin-top: 1rem;">
-                Canal Telegram: <a href="https://t.me/NexusIntelligence" style="color: var(--blue);">@NexusIntelligence</a><br>
-                Serveur Discord: Sur invitation (contacter par email)
-            </p>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        © 2026 Nexus Intelligence — Collectif indépendant<br>
-        Renseignement économique — Analyses, enquêtes, signaux faibles<br>
-        <br>
-        <em>Tous droits réservés. La reproduction des analyses Nexus Intelligence
-        est autorisée avec mention de la source.</em>
+        <div class="container">
+            <p>&copy; 2026 Nexus Intelligence. Tous droits réservés.</p>
+            <p style="margin-top:8px;">Paiements sécurisés par Stripe. Données chiffrées.</p>
+        </div>
     </footer>
 </body>
 </html>
