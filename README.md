@@ -1,45 +1,33 @@
 # Nexus Intelligence
 
-Autonomous media intelligence system for content discovery, contextual media search, and automated video production.
+Autonomous media intelligence system with contextual discovery, content generation, and self-healing capabilities.
 
 ## Features
 
-- **Media Detective** — Scans Google Trends, Reddit, Hacker News, RSS feeds for viral topics
-- **Contextual Media Search** — Pexels API + Pixabay API + Bing Images for licensed, attributable media
-- **Video Pipeline** — Script generation → TTS → footage assembly → FFmpeg → YouTube upload
-- **Pre-Publish Quality Check** — Script sanitizer + Whisper voice decoder + LLM content analysis
-- **Evolutionary Trading** — Genetic algorithm strategy discovery with walk-forward validation
+- Media Detective - Contextual image/video discovery from Pexels, Pixabay, Wikimedia
+- YouTube Shorts Pipeline - Script to TTS to Footage to Assembly to Upload with quality checks
+- Self-Healing System - Auto-repair T0/T1/T2 with test gate and rollback
+- Model Router - Intelligent LLM selection (3B minimum, 3B-14B dynamic switching)
+- Anti-Doublon - Perceptual hash deduplication for content
 
-## Architecture
+## YouTube Shorts Pipeline
 
-```
-Topic Discovery → Media Search → Script Generation → TTS → Video Assembly → Quality Check → Upload
-```
+1. Script generation (LLM)
+2. Script sanitization (filter: IA, GPT, Ollama, LLM)
+3. TTS voice generation
+4. Voice verification (Whisper decode and compare)
+5. Footage download (Pexels/Pixabay)
+6. Video assembly (ffmpeg)
+7. Pre-publish LLM check
+8. YouTube upload
 
-### Media Sources
-- Pexels API (images + videos HD/4K, licensed)
-- Pixabay API (images + videos, no attribution required)
-- Bing Images (fallback)
-- Google Trends, Reddit, HN, RSS feeds
+## Model Router
 
-### Quality Pipeline
-1. Script sanitizer filters sensitive words
-2. Whisper speech-to-text verifies generated audio matches script
-3. LLM analyzes content before publication
-
-## Tech Stack
-- Python 3.11
-- Ollama (local LLM, 3B-14B models)
-- Edge-TTS (free Microsoft Neural voices)
-- Pexels/Pixabay APIs
-- FFmpeg
-- YouTube Data API v3
-- Whisper (speech-to-text)
-
-## Results
-- 55.8% win rate on multi-coin backtest (BTC 67.6%)
-- Automated media discovery across 5+ sources
-- Pre-publish quality gate operational
+- 3B minimum for complex decisions (trading, code, reasoning)
+- Dynamic 3B-14B switching based on complexity
+- Performance tracking per model per task
+- Cloud API fallback (Groq, OpenRouter, Gemini)
 
 ## License
-Proprietary — Nexus Intelligence
+
+MIT
